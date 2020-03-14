@@ -11,15 +11,15 @@ type FieldTypes =
   | "multiline";
 
 export type FieldUpdates = "blur" | "change" | "submit";
-export class ModelConfig {
-  controls: FieldConfig[];
-  updateOn?: FieldUpdates = "blur";
-}
+// export class ModelConfig {
+//   controls: FieldConfig[];
+//   updateOn?: FieldUpdates = "blur";
+// }
 export class FieldConfig {
-  controlType:'control'|'group'|'array'='control';
-  type: FieldTypes = "text";
+  controlType?: "control" | "group" | "array" = "control";
+  type?: FieldTypes = "text";
   name: string;
-  controls?:ModelConfig|ModelConfig[];
+  controls?: FieldConfig | FieldConfig[];
   label?: string;
   placeholder?: string;
   value?: any = null;

@@ -24,6 +24,7 @@ export class FormBuilderService {
         break;
       case "array":
         control = this.createFormArray(ctrl.controls, ctrl.updateOn);
+        break;
       default:
         control = this.createControl(
           ctrl.value,
@@ -36,21 +37,19 @@ export class FormBuilderService {
 
   private createFormGroup(group, updateOn) {
     let formGroup: FormGroup = new FormGroup({}, { updateOn: updateOn });
-    for (let ctrl of group.controls) {
+    for (let ctrl of group) {
       const c = this.createControl(ctrl.value, ctrl.validators, ctrl.updateOn);
       formGroup.addControl(ctrl.name, c);
     }
     return formGroup;
   }
 
-  private createFormArray(array, updateOn) {
+  private createFormArray(array: ModelConfig[], updateOn) {
     let formArray = new FormArray([], { updateOn });
     if (array&&array.length > 0) {
       for (let item of array) {
-        for (let ctrl of item.controls) {
-          const control = this.controlSelector(ctrl);
-          formArray.push(control);
-        }
+        const control = this.controlSelector(item);
+        formArray.push(control);
       }
     }
     return formArray;
