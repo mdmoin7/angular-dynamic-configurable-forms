@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { FormGroup, FormControl, FormArray } from "@angular/forms";
 import { FormConfig } from "../models/form-config.model";
-import { FieldUpdates, ModelConfig } from "../models/field-config.model";
+import { FieldUpdates } from "../models/field-config.model";
 
 @Injectable()
 export class FormBuilderService {
