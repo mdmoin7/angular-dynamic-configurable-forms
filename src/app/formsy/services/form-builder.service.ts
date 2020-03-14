@@ -35,8 +35,8 @@ export class FormBuilderService {
     return control;
   }
 
-  private createFormGroup(group, updateOn) {
-    let formGroup: FormGroup = new FormGroup({}, { updateOn: updateOn });
+  createFormGroup(group, updateOn:'change'|'blur'|'submit'='blur') {
+    let formGroup: FormGroup = new FormGroup({}, { updateOn });
     for (let ctrl of group) {
       const c = this.createControl(ctrl.value, ctrl.validators, ctrl.updateOn);
       formGroup.addControl(ctrl.name, c);
@@ -44,7 +44,7 @@ export class FormBuilderService {
     return formGroup;
   }
 
-  private createFormArray(array: ModelConfig[], updateOn) {
+  createFormArray(array, updateOn) {
     let formArray = new FormArray([], { updateOn });
     if (array&&array.length > 0) {
       for (let item of array) {
@@ -55,7 +55,7 @@ export class FormBuilderService {
     return formArray;
   }
 
-  private createControl(
+  createControl(
     defaultValue,
     validators: any[],
     updateOn: FieldUpdates = "blur"

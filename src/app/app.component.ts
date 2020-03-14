@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import {FormConfig} from './formsy/models/form-config.model';
 import { FieldConfig } from "src/app/formsy/models/field-config.model";
-import { FormGroup, Validators } from "@angular/forms";
+import { FormGroup, Validators, FormArray } from "@angular/forms";
 
 @Component({
   selector: 'my-app',
@@ -50,5 +50,6 @@ export class AppComponent  {
     };
   }
 
-  getFormObject(formObject:FormGroup){}
+  getFormObject(formObject:FormGroup){
+  }
 }
